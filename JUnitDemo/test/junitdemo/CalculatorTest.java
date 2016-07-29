@@ -5,6 +5,8 @@
  */
 package junitdemo;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -18,8 +20,12 @@ import org.junit.Test;
  * @author amitoshseu
  */
 public class CalculatorTest {
+    long start;
+    long stop;
+    static long testCaseNumber= 1;
     
     public CalculatorTest() {
+        
     }
     
     @BeforeClass
@@ -28,20 +34,26 @@ public class CalculatorTest {
     
     @AfterClass
     public static void tearDownClass() {
+        
     }
     
+    //Insdite befor annnotaion this task is not very important for testing
     @Before
     public void setUp() {
+         start = System.currentTimeMillis();
+        
     }
     
     @After
     public void tearDown() {
+        stop = System.currentTimeMillis();
+        long timeElapsed = stop - start;
+        System.out.println("Test case " + (testCaseNumber++) + " took " + (stop - start)/1000 + " seconds.");
     }
-
     /**
      * Test of add method, of class Calculator.
      */
-    @Test
+    @Test(timeout = 500)
     public void testAdd() {
         System.out.println("add");
         int a = 10;
@@ -49,6 +61,11 @@ public class CalculatorTest {
         Calculator instance = new Calculator();
         int expResult = 30;
         int result = instance.add(a, b);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(CalculatorTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Assert.assertEquals(expResult, result);//A static method of Assert Class
         // TODO review the generated test code and remove the default call to fail.
        // fail("The test case is a prototype.");
@@ -68,12 +85,13 @@ public class CalculatorTest {
     @Test
     public void testSubtract() {
         System.out.println("subtract");
-        int a = 10;
-        int b = 20;
+        int a = 0;
+        int b = 0;
         Calculator instance = new Calculator();
-        int expResult = -10;
+        int expResult = 0;
         int result = instance.subtract(a, b);
         Assert.assertEquals(expResult, result);
+        Assert.assertEquals("Testing test","Test", "TeST");
         // TODO review the generated test code and remove the default call to fail.
        // fail("The test case is a prototype.");
     }
