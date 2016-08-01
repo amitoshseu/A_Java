@@ -53,7 +53,7 @@ public class CalculatorTest {
     /**
      * Test of add method, of class Calculator.
      */
-    @Test(timeout = 500)
+    @Test// @Test(timeout = 500)
     public void testAdd() {
         System.out.println("add");
         int a = 10;
@@ -91,7 +91,7 @@ public class CalculatorTest {
         int expResult = 0;
         int result = instance.subtract(a, b);
         Assert.assertEquals(expResult, result);
-        Assert.assertEquals("Testing test","Test", "TeST");
+       // Assert.assertEquals("Testing test","Test", "TeST");
         // TODO review the generated test code and remove the default call to fail.
        // fail("The test case is a prototype.");
     }
