@@ -19,6 +19,7 @@ public class JUnitDemo {
         int result =c.add(3,5);
         System.out.println("Result of addition 3 and 5 = " + result);
         System.out.println(Integer.MAX_VALUE);
+        System.out.println("Add another line");
     }
     
 }
