@@ -5,6 +5,7 @@
  */
 package model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -12,12 +13,24 @@ import javax.persistence.Id;
  *
  * @author amitoshseu
  */
-@Entity
+@Entity(name="USER_DETAILS")
 public class UserDetails {
     @Id
+    @Column(name = "USER_ID")
     private int userId;
+    @Column(name="USER_NAME")
     private String userName;
-
+    
+    
+    public UserDetails() {
+    }
+    
+    public UserDetails(int userId, String userName) {
+        this.userId = userId;
+        this.userName = userName;
+    }
+    
+    
     public int getUserId() {
         return userId;
     }
@@ -33,6 +46,11 @@ public class UserDetails {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDetails{" + "userId=" + userId + ", userName=" + userName + '}';
     }
     
 }

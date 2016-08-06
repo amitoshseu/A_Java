@@ -33,13 +33,18 @@ public class HibernateKoushik {
         Transaction transaction = session.beginTransaction();
         try{
             UserDetails user = new UserDetails();
-            user.setUserId(1);
-            user.setUserName("Amitosh Gain");
-            session.save(user);
+//            user.setUserId(1);
+//            user.setUserName("Amitosh Gain");
+//            
+//            user.setUserId(2);
+//            user.setUserName("Mr Perfect");
+//            
+            session.save(new UserDetails(3,"Abul"));
+            session.save(new UserDetails(4,"Babul"));
             transaction.commit();
         }catch(Exception e){
             transaction.rollback();
-        }    
+        }
 }
     
     public static void main(String[] args) {
