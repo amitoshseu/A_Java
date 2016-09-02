@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panelGrid columns="2">
+            <p:outputLabel for="studentId" value="Student ID" />
+            <p:inputText id="studentId" value="#{student.id}"/>
+            <p:outputLabel for="studentName" value="Student Name" /> 
+            <h:outputText id="studentName" value="#{student.name}"/>
+            </p:panelGrid>
+        </h:form>
+        
+    <p:dataTable var="section" value="#{student.registeredSections}">
+        <p:column headerText="Course Code">
+            <h:outputText value="#{section.course.courseCode}" />
+        </p:column>
+        <p:column headerText="Section">
+            <h:outputText value="#{section.sectionNumber}" />
+        </p:column>
+        <p:column headerText="Title">
+            <h:outputText value="#{section.course.courseTitle}" />
+        </p:column>
+        <p:column headerText="Faculty">
+            <h:outputText value="#{section.facultyCode}" />
+        </p:column>
+    </p:dataTable>           
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+    </h:body>
+</html>
+ 
