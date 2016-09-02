@@ -35,11 +35,11 @@ public class Student {
     
     public Student() {
 //        this.name ="Amitosh";
-//        registeredSections = new ArrayList<>();
-//        registeredSections.add(new Section(new Course("CSE1033","Data Structure"),3,"RB"));
-//        registeredSections.add(new Section(new Course("CSE2015","Java"),1,"KMH"));
-//        registeredSections.add(new Section(new Course("CSE3035","Info. System and Software engineering"),2,"RIK"));
-//        registeredSections.add(new Section(new Course("CSE4033","Web and Internet Programming"),1,"AKMA"));
+        registeredSections = new ArrayList<>();
+        registeredSections.add(new Section(new Course("CSE1033","Data Structure"),3,"RB"));
+        registeredSections.add(new Section(new Course("CSE2015","Java"),1,"KMH"));
+        registeredSections.add(new Section(new Course("CSE3035","Info. System and Software engineering"),2,"RIK"));
+        registeredSections.add(new Section(new Course("CSE4033","Web and Internet Programming"),1,"AKMA"));
     }
 
     public String getId() {
@@ -50,19 +50,22 @@ public class Student {
 //        if(id.equals("1234"))
 //            this.name="Amitosh";
 //        else this.name= "Aranya";
-        String urlString = "http://my.seu.ac.bd/~kmhasan/_WebServices_/fetch_tempreg.php?id="+ id +"&sem=43";
-        try {
-            URL url = new URL(urlString);
-           BufferedReader input = new BufferedReader(new InputStreamReader(url.openStream()));
-           String line;
-           while((line = input.readLine()) != null){
-               System.out.println(line);
-           }
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            
+
+
+//            String urlString = "http://my.seu.ac.bd/~kmhasan/_WebServices_/fetch_tempreg.php?id="+ id +"&sem=43";
+//            try {
+//                URL url = new URL(urlString);
+//               BufferedReader input = new BufferedReader(new InputStreamReader(url.openStream()));
+//               String line;
+//               while((line = input.readLine()) != null){
+//                   System.out.println(line);
+//               }
+//            } catch (MalformedURLException ex) {
+//                Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (IOException ex) {
+//                Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+//            }
         this.id = id;
     }
 

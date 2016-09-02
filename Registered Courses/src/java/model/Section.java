@@ -17,7 +17,7 @@ public class Section {
 
     public Section() {
     }
-
+    
     public Section(Course course, int sectionNumber, String facultyCode) {
         this.course = course;
         this.sectionNumber = sectionNumber;

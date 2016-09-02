@@ -2,11 +2,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
-    <h:body>
+        <h:body>
         <h:form>
             <p:panelGrid columns="2">
             <p:outputLabel for="studentId" value="Student ID" />
@@ -15,7 +16,8 @@
             <h:outputText id="studentName" value="#{student.name}"/>
             </p:panelGrid>
         </h:form>
-        
+    
+    <!--Style 1--> 
     <p:dataTable var="section" value="#{student.registeredSections}">
         <p:column headerText="Course Code">
             <h:outputText value="#{section.course.courseCode}" />
@@ -29,7 +31,29 @@
         <p:column headerText="Faculty">
             <h:outputText value="#{section.facultyCode}" />
         </p:column>
-    </p:dataTable>           
+    </p:dataTable>  
+    
+    <!--Style 2-->
+    <h:dataTable value="#{student.registeredSections}" var="section" border="4">
+        <h:column>
+            <f:facet name="header">Course Code</f:facet>
+         #{section.course.courseCode}
+      </h:column>
+        <h:column>
+            <f:facet name="header">Section</f:facet>
+         #{section.sectionNumber}
+      </h:column>
+        <h:column>
+            <f:facet name="header">Title</f:facet>
+           #{section.course.courseTitle}
+       </h:column>
+        <h:column>
+           <f:facet name="header">Faculty</f:facet>
+           #{section.facultyCode}
+       </h:column>
+        
+    </h:dataTable> 
+        
         <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
     </h:body>
 </html>
