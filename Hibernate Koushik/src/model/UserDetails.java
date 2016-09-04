@@ -11,7 +11,10 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -19,14 +22,12 @@ import javax.persistence.Id;
  */
 @Entity//(name="USER_DETAILS")
 public class UserDetails {
-    @Id
-   // @Column(name = "USER_ID")
+    @Id @GeneratedValue
     private int userId;
-    //@Column(name="USER_NAME")
     private String userName;
-    @ElementCollection
-    private Set<Address> listOfAddress = new HashSet();
-    
+    @OneToOne
+    @JoinColumn(name="vehicleId")
+    private Vehicle vehicle;
     
     public UserDetails() {
     }
@@ -59,12 +60,13 @@ public class UserDetails {
         return "UserDetails{" + "userId=" + userId + ", userName=" + userName + '}';
     }
 
-    public Set<Address> getListOfAddress() {
-        return listOfAddress;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setListOfAddress(Set<Address> listOfAddress) {
-        this.listOfAddress = listOfAddress;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
-    
+
+
 }
