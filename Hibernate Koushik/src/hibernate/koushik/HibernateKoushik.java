@@ -34,20 +34,25 @@ public class HibernateKoushik {
         Transaction transaction = session.beginTransaction();
         try{
             UserDetails user = new UserDetails();
-            user.setUserId(1);
             user.setUserName("First User");
-
-//            session.save(new UserDetails(3,"Abul"));
-//            session.save(new UserDetails(4,"Babul"));
-            Address addr = new Address();
+            user.setUserId(1);
             
-            addr.setStreet("Street Name");
-            addr.setCity("City name");
-            addr.setPincode("PinCode");
-            addr.setState("State name");
+            Address addr1 = new Address();
+            addr1.setStreet("First Street");
+            addr1.setCity("First City");
+            addr1.setState("First State");
+            addr1.setPincode("10001");
+            
+            Address addr2 = new Address();
+            addr2.setStreet("Second Street");
+            addr2.setCity("Second City");
+            addr2.setState("Second State");
+            addr2.setPincode("20002");
+            
+            user.getListOfAddress().add(addr1);
+            user.getListOfAddress().add(addr2);
+            
             session.save(user);
-            user.setAddress(addr);
-            
             transaction.commit();
             session.close();
         }catch(Exception e){

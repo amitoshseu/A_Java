@@ -5,7 +5,10 @@
  */
 package model;
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,8 +24,8 @@ public class UserDetails {
     private int userId;
     //@Column(name="USER_NAME")
     private String userName;
-    @Embedded
-    private Address address;
+    @ElementCollection
+    private Set<Address> listOfAddress = new HashSet();
     
     
     public UserDetails() {
@@ -56,12 +59,12 @@ public class UserDetails {
         return "UserDetails{" + "userId=" + userId + ", userName=" + userName + '}';
     }
 
-    public Address getAddress() {
-        return address;
+    public Set<Address> getListOfAddress() {
+        return listOfAddress;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setListOfAddress(Set<Address> listOfAddress) {
+        this.listOfAddress = listOfAddress;
     }
     
 }
