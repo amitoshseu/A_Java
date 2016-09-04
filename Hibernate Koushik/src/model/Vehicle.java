@@ -12,7 +12,7 @@ import javax.persistence.Id;
 /**
  *
  * @author amitoshseu
- */
+ */ 
 @Entity
 public class Vehicle {
     @Id @GeneratedValue

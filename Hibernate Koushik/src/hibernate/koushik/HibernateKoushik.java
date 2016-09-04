@@ -40,10 +40,17 @@ public class HibernateKoushik {
             Vehicle vehicle = new Vehicle();
             vehicle.setVehicleName("Car");
             
-            user.setVehicle(vehicle);
+            Vehicle vehicle2 = new Vehicle();
+            vehicle2.setVehicleName("Jeep");
+            
+            
+            
+            user.getVehicle().add(vehicle);
+            user.getVehicle().add(vehicle2);
             
             session.save(user);
             session.save(vehicle);
+            session.save(vehicle2);
             
             transaction.commit();
             session.close();

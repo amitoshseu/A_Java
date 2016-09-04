@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -14,6 +16,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -25,9 +29,12 @@ public class UserDetails {
     @Id @GeneratedValue
     private int userId;
     private String userName;
-    @OneToOne
-    @JoinColumn(name="vehicleId")
-    private Vehicle vehicle;
+    @OneToMany
+    @JoinTable(name="User_Vehicle",joinColumns=@JoinColumn(name="User_Id"),
+            inverseJoinColumns=@JoinColumn(name="Vehicle_Id")
+    )
+    private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
+    
     
     public UserDetails() {
     }
@@ -60,11 +67,11 @@ public class UserDetails {
         return "UserDetails{" + "userId=" + userId + ", userName=" + userName + '}';
     }
 
-    public Vehicle getVehicle() {
+    public Collection<Vehicle> getVehicle() {
         return vehicle;
     }
 
-    public void setVehicle(Vehicle vehicle) {
+    public void setVehicle(Collection<Vehicle> vehicle) {
         this.vehicle = vehicle;
     }
 
