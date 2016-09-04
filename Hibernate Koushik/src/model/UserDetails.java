@@ -6,6 +6,7 @@
 package model;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -13,13 +14,15 @@ import javax.persistence.Id;
  *
  * @author amitoshseu
  */
-@Entity(name="USER_DETAILS")
+@Entity//(name="USER_DETAILS")
 public class UserDetails {
     @Id
-    @Column(name = "USER_ID")
+   // @Column(name = "USER_ID")
     private int userId;
-    @Column(name="USER_NAME")
+    //@Column(name="USER_NAME")
     private String userName;
+    @Embedded
+    private Address address;
     
     
     public UserDetails() {
@@ -51,6 +54,14 @@ public class UserDetails {
     @Override
     public String toString() {
         return "UserDetails{" + "userId=" + userId + ", userName=" + userName + '}';
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
     
 }

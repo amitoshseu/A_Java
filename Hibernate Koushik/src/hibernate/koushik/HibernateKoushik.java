@@ -5,6 +5,7 @@
  */
 package hibernate.koushik;
 
+import model.Address;
 import model.UserDetails;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -33,15 +34,22 @@ public class HibernateKoushik {
         Transaction transaction = session.beginTransaction();
         try{
             UserDetails user = new UserDetails();
-//            user.setUserId(1);
-//            user.setUserName("Amitosh Gain");
-//            
-//            user.setUserId(2);
-//            user.setUserName("Mr Perfect");
-//            
-            session.save(new UserDetails(3,"Abul"));
-            session.save(new UserDetails(4,"Babul"));
+            user.setUserId(1);
+            user.setUserName("First User");
+
+//            session.save(new UserDetails(3,"Abul"));
+//            session.save(new UserDetails(4,"Babul"));
+            Address addr = new Address();
+            
+            addr.setStreet("Street Name");
+            addr.setCity("City name");
+            addr.setPincode("PinCode");
+            addr.setState("State name");
+            session.save(user);
+            user.setAddress(addr);
+            
             transaction.commit();
+            session.close();
         }catch(Exception e){
             transaction.rollback();
         }
